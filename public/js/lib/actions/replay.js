@@ -25,7 +25,7 @@
             $('#files').on('change', function(e) {
                 var files = (e.target || {}).files || ($(this).val() ? [{name: $(this).val(), type: utils.fileMimeType($(this).val())}] : null);
                 if (files) {
-                    uploadContentFiles({files: files, route: '/api/replay/upload'});
+                    uploadContentFiles({files: files, route: '/replay/upload'});
                 }
             });
         };
@@ -39,7 +39,7 @@
             //var text = textarea.val();
             var uploadForm = $('#filesForm');
             var doneUploading = false;
-            uploadForm.attr('action', /*config.relative_path*/ config.relative_path + params.route);
+            uploadForm.attr('action', config.relative_path + params.route);
     
             /*var cid = categoryList.getSelectedCid();
             if (!cid && ajaxify.data.cid) {

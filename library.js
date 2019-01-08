@@ -7,12 +7,12 @@ var	NodeBB = require('./lib/nodebb'),
 	Commands = require('./lib/commands'),
 	Controllers = require('./lib/controllers'),
 
-	/*path = require('path'),
+	path = require('path'),
     fs = require('fs'),
     mkdirp = require('mkdirp'),
     mv = require('mv'),
     async = require('async'),
-    nconf = require.main.require('nconf'),*/
+    nconf = require.main.require('nconf'),
 
 	app,
 
@@ -45,7 +45,7 @@ Extendedsc.init.load = function(params, callback) {
 	router.get('/api/admin/plugins/' + Config.plugin.id, renderAdmin);
 	//AOM agregamos el router para el subidor de replays
 	router.post('/replay/upload', multiparty, hostMiddleware.validateFiles, hostMiddleware.applyCSRF, Controllers.upload);
-	router.post('/api/replay/upload', Controllers.upload);
+	//router.post('/api/replay/upload', Controllers.upload);
 
 	NodeBB.SocketPlugins[Config.plugin.id] = Sockets.events;
 	NodeBB.SocketAdmin[Config.plugin.id] = Config.adminSockets;
@@ -53,7 +53,7 @@ Extendedsc.init.load = function(params, callback) {
 	app = params.app;
 
 	// Create "replays/aom" subfolder into upload_path
-	//mkdirp(path.join(nconf.get('upload_path'), 'replays/aom'), callback);
+	mkdirp(path.join(nconf.get('upload_path'), 'replays/aom'), callback);
 
 	Config.init(callback);
 };
@@ -136,11 +136,8 @@ Extendedsc.settings.saveUserSettings = function(data) {
 };
 
 Extendedsc.processUpload = function(payload, callback) {
-	callback(null, {
-		id: 'funcionando'
-	});
-	/*var id = path.basename(payload.path),
-		uploadPath = path.join(nconf.get('upload_path'), 'audio-embed', id);
+	var id = path.basename(payload.path),
+		uploadPath = path.join(nconf.get('upload_path'), 'replays/aom', id);
 
 	async.waterfall([
 		async.apply(mv, payload.path, uploadPath)
@@ -152,8 +149,7 @@ Extendedsc.processUpload = function(payload, callback) {
 		callback(null, {
 			id: id
 		});
-	});*/
-
+	});
 };
 
 module.exports = Extendedsc;
