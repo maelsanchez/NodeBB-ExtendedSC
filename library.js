@@ -7,12 +7,12 @@ var	NodeBB = require('./lib/nodebb'),
 	Commands = require('./lib/commands'),
 	Controllers = require('./lib/controllers'),
 
-	path = require('path'),
+	/*path = require('path'),
     fs = require('fs'),
     mkdirp = require('mkdirp'),
     mv = require('mv'),
     async = require('async'),
-    nconf = require.main.require('nconf'),
+    nconf = require.main.require('nconf'),*/
 
 	app,
 
@@ -53,7 +53,7 @@ Extendedsc.init.load = function(params, callback) {
 	app = params.app;
 
 	// Create "replays/aom" subfolder into upload_path
-	mkdirp(path.join(nconf.get('upload_path'), 'replays/aom'), callback);
+	//mkdirp(path.join(nconf.get('upload_path'), 'replays/aom'), callback);
 
 	Config.init(callback);
 };
@@ -136,11 +136,11 @@ Extendedsc.settings.saveUserSettings = function(data) {
 };
 
 Extendedsc.processUpload = function(payload, callback) {
-	var id = path.basename(payload.path),
-		uploadPath = path.join(nconf.get('upload_path'), 'replays/aom', id);
+	//var id = path.basename(payload.path),
+	//	uploadPath = path.join(nconf.get('upload_path'), 'replays/aom', id);
 
 		callback(null, {
-			id: uploadPath
+			id: u'funcionando'
 		});
 
 	/*async.waterfall([
