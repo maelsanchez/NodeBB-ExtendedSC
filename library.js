@@ -7,12 +7,12 @@ var	NodeBB = require('./lib/nodebb'),
 	Commands = require('./lib/commands'),
 	Controllers = require('./lib/controllers'),
 
-	/*path = require('path'),
+	path = require('path'),
     fs = require('fs'),
     mkdirp = require('mkdirp'),
     mv = require('mv'),
     async = require('async'),
-    nconf = require.main.require('nconf'),*/
+    nconf = require.main.require('nconf'),
 
 	app,
 
