@@ -35,7 +35,7 @@ Extendedsc.init.load = function(params, callback) {
 	}
 
 	var router = params.router,
-		hostMiddleware = params.middleware;
+		hostMiddleware = params.middleware,
 		multiparty = require.main.require('connect-multiparty')();
 
 	router.get('/' + Config.plugin.id, hostMiddleware.buildHeader, renderGlobal);
