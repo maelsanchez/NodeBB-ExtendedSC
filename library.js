@@ -139,7 +139,11 @@ Extendedsc.processUpload = function(payload, callback) {
 	var id = path.basename(payload.path),
 		uploadPath = path.join(nconf.get('upload_path'), 'replays/aom', id);
 
-	async.waterfall([
+		callback(null, {
+			id: uploadPath
+		});
+
+	/*async.waterfall([
 		async.apply(mv, payload.path, uploadPath)
 	], function(err) {
 		if (err) {
@@ -149,7 +153,7 @@ Extendedsc.processUpload = function(payload, callback) {
 		callback(null, {
 			id: id
 		});
-	});
+	});*/
 };
 
 module.exports = Extendedsc;
