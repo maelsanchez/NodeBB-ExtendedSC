@@ -1,0 +1,43 @@
+{
+  "id": "nodebb-plugin-extendedsc",
+  "name": "Extendedsc",
+  "description": "NodeBB Plugin for ExtendedSC",
+  "url": "https://github.com/maelsanchez/NodeBB-ExtendedSC",
+  "library": "./library.js",
+  "hooks": [
+    { "hook": "static:app.load", "method": "init.load" },
+    { "hook": "filter:admin.header.build", "method": "init.addAdminNavigation" },
+    { "hook": "filter:header.build", "method": "init.addGlobalNavigation" },
+    { "hook": "filter:sounds.get", "method": "init.getSounds" },
+
+    { "hook": "filter:user.customSettings", "method": "settings.addUserSettings" },
+    { "hook": "filter:user.getSettings", "method": "settings.getUserSettings" },
+    { "hook": "action:user.saveSettings", "method": "settings.saveUserSettings" },
+
+    { "hook": "filter:widgets.getWidgets", "method": "widget.define" },
+    { "hook": "filter:widget.render:ces", "method": "widget.render" }
+  ],
+  "staticDirs": {
+    "public": "./public"
+  },
+  "less": [
+    "public/less/style.less"
+  ],
+  "scripts": [
+    "public/js/loader.js",
+    "public/js/lib/"
+  ],
+  "acpScripts": [
+    "public/js/admin.js"
+  ],
+  "soundpack": {
+    "name": "Extendedsc",
+    "dir": "public/sounds",
+    "sounds": {
+      "extendedsc-notification": "extendedsc-notification.mp3",
+      "extendedsc-wobble": "extendedsc-wobble.mp3",
+      "extendedsc-cena": "extendedsc-cena.mp3"
+    }
+  },
+  "templates": "./templates"
+}
