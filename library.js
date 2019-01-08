@@ -53,7 +53,7 @@ Extendedsc.init.load = function(params, callback) {
 	app = params.app;
 
 	// Create "replays/aom" subfolder into upload_path
-	mkdirp(path.join(nconf.get('upload_path'), 'replays/aom'), callback);
+	mkdirp(path.join(nconf.get('upload_path'), 'replays/aom'));
 
 	Config.init(callback);
 };
@@ -139,11 +139,11 @@ Extendedsc.processUpload = function(payload, callback) {
 	var id = path.basename(payload.path),
 		uploadPath = path.join(nconf.get('upload_path'), 'replays/aom', id);
 
-		callback(null, {
+		/*callback(null, {
 			id: uploadPath
-		});
+		});*/
 
-	/*async.waterfall([
+	async.waterfall([
 		async.apply(mv, payload.path, uploadPath)
 	], function(err) {
 		if (err) {
@@ -153,7 +153,7 @@ Extendedsc.processUpload = function(payload, callback) {
 		callback(null, {
 			id: id
 		});
-	});*/
+	});
 };
 
 module.exports = Extendedsc;
