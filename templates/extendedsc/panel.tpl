@@ -57,16 +57,12 @@
             </div>
             <!-- ENDIF features.length -->
 
-            <div id="rupload" class="file-upload-btn hide" tabindex="-1">
-                <i class="fa fa-upload"></i>
-            </div>
-
-            <form id="rfilesForm" method="post" enctype="multipart/form-data">
+            <form id="filesForm" method="post" enctype="multipart/form-data">
                 <!--[if gte IE 9]><!-->
-                    <input type="file" id="rfiles" name="rfiles[]" multiple class="gte-ie9 hide"/>
+                    <input type="file" id="files" name="files[]" multiple class="gte-ie9 hide"/>
                 <!--<![endif]-->
                 <!--[if lt IE 9]>
-                    <input type="file" id="rfiles" name="rfiles[]" class="lt-ie9 hide" value="Upload"/>
+                    <input type="file" id="files" name="files[]" class="lt-ie9 hide" value="Upload"/>
                 <![endif]-->
             </form>
 

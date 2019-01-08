@@ -2,13 +2,10 @@
 /* global ajaxify, config */
 
 (function(Extendedsc) {
-    console.log('creado');
 	var Replay = function(sbInstance) {
-        console.log('config.relative_path:');
-        console.log(config);
 		this.register = function() {
             sbInstance.dom.container.find('.extendedsc-button-replay').on('click', function(e) {
-                $('#rfiles').click();
+                $('#files').click();
                 console.log('click sobre boton');
             });
 			/*ajaxify.loadTemplate('shoutbox/features/replay', function(tpl){
@@ -25,7 +22,7 @@
 				});
             });*/
             
-            $('#rfiles').on('change', function(e) {
+            $('#files').on('change', function(e) {
                 var files = (e.target || {}).files || ($(this).val() ? [{name: $(this).val(), type: utils.fileMimeType($(this).val())}] : null);
                 if (files) {
                     uploadContentFiles({files: files, route: '/api/replay/upload'});
@@ -40,9 +37,9 @@
             //var postContainer = $('.composer[data-uuid="' + post_uuid + '"]');
             //var textarea = postContainer.find('textarea');
             //var text = textarea.val();
-            var uploadForm = $('#rfilesForm');
+            var uploadForm = $('#filesForm');
             var doneUploading = false;
-            uploadForm.attr('action', /*config.relative_path*/ 'localhost' + params.route);
+            uploadForm.attr('action', /*config.relative_path*/ config.relative_path + params.route);
     
             /*var cid = categoryList.getSelectedCid();
             if (!cid && ajaxify.data.cid) {

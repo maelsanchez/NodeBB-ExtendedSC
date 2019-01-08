@@ -5,7 +5,7 @@ var	NodeBB = require('./lib/nodebb'),
 	Config = require('./lib/config'),
 	Sockets = require('./lib/sockets'),
 	Commands = require('./lib/commands'),
-	//Controllers = require('./lib/controllers'),
+	Controllers = require('./lib/controllers'),
 
 	/*path = require('path'),
     fs = require('fs'),
@@ -36,8 +36,7 @@ Extendedsc.init.load = function(params, callback) {
 
 	var router = params.router,
 		hostMiddleware = params.middleware;
-		//multiparty = require.main.require('connect-multiparty')();/*,
-		//hostControllers = params.controllers;*/
+		multiparty = require.main.require('connect-multiparty')();
 
 	router.get('/' + Config.plugin.id, hostMiddleware.buildHeader, renderGlobal);
 	router.get('/api/' + Config.plugin.id, renderGlobal);
@@ -45,8 +44,8 @@ Extendedsc.init.load = function(params, callback) {
 	router.get('/admin/plugins/' + Config.plugin.id, hostMiddleware.admin.buildHeader, renderAdmin);
 	router.get('/api/admin/plugins/' + Config.plugin.id, renderAdmin);
 	//AOM agregamos el router para el subidor de replays
-	//router.post('/replay/upload', multiparty, hostMiddleware.validateFiles, hostMiddleware.applyCSRF, Controllers.upload);
-	//router.post('/api/replay/upload', Controllers.upload);
+	router.post('/replay/upload', multiparty, hostMiddleware.validateFiles, hostMiddleware.applyCSRF, Controllers.upload);
+	router.post('/api/replay/upload', Controllers.upload);
 
 	NodeBB.SocketPlugins[Config.plugin.id] = Sockets.events;
 	NodeBB.SocketAdmin[Config.plugin.id] = Config.adminSockets;
@@ -136,8 +135,11 @@ Extendedsc.settings.saveUserSettings = function(data) {
 	Config.user.save(data);
 };
 
-/*Extendedsc.processUpload = function(payload, callback) {
-	var id = path.basename(payload.path),
+Extendedsc.processUpload = function(payload, callback) {
+	callback(null, {
+		id: 'funcionando'
+	});
+	/*var id = path.basename(payload.path),
 		uploadPath = path.join(nconf.get('upload_path'), 'audio-embed', id);
 
 	async.waterfall([
@@ -150,8 +152,8 @@ Extendedsc.settings.saveUserSettings = function(data) {
 		callback(null, {
 			id: id
 		});
-	});
+	});*/
 
-};*/
+};
 
 module.exports = Extendedsc;
