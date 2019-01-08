@@ -140,7 +140,7 @@ Extendedsc.processUpload = function(payload, callback) {
 	//	uploadPath = path.join(nconf.get('upload_path'), 'replays/aom', id);
 
 		callback(null, {
-			id: u'funcionando'
+			id:'funcionando'
 		});
 
 	/*async.waterfall([
