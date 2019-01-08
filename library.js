@@ -112,7 +112,7 @@ Extendedsc.widget.render = function(widget, callback) {
 				data.hiddenStyle = 'display: none;';
 			}
 
-			app.render('ces/panel', data, callback);
+			app.render('extendedsc/panel', data, callback);
 		});
 	});
 };
