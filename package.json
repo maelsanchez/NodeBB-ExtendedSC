@@ -8,9 +8,11 @@
   },
   "dependencies": {
     "async": "^2.0.0-rc.3",
-    "string": "~3.3.1",
+    "bufferpack": "0.0.6",
     "mkdirp": "^0.5.1",
-    "mv": "^2.1.1"
+    "mv": "^2.1.1",
+    "string": "~3.3.1",
+    "xpath": "0.0.27"
   },
   "nbbpm": {
     "compatibility": "^1.6.1"
