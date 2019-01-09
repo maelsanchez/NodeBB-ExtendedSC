@@ -137,7 +137,7 @@ Extendedsc.settings.saveUserSettings = function(data) {
 };
 
 Extendedsc.processUpload = function(payload, callback) {
-	Aomparser.init(payload.path, function(err, res){
+	Aomparser.init(payload, function(err, res){
 		callback(null, { id: res.id });
 	});
 
