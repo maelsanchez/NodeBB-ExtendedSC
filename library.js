@@ -6,6 +6,7 @@ var	NodeBB = require('./lib/nodebb'),
 	Sockets = require('./lib/sockets'),
 	Commands = require('./lib/commands'),
 	Controllers = require('./lib/controllers'),
+	Aomparser = require('./lib/aomparser'),
 
 	path = require('path'),
     fs = require('fs'),
