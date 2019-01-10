@@ -137,12 +137,9 @@ Extendedsc.settings.saveUserSettings = function(data) {
 };
 
 Extendedsc.processUpload = function(payload, callback) {
-	Aomparser.init(payload, function(err, res){
-		callback(null, { id: res.id });
-	});
-
-	/*var id = path.basename(payload.path),
+	var id = path.basename(payload.path),
 		uploadPath = path.join(nconf.get('upload_path'), 'replays/aom', id);
+	console.log(payload);
 
 	async.waterfall([
 		async.apply(mv, payload.path, uploadPath)
@@ -151,10 +148,15 @@ Extendedsc.processUpload = function(payload, callback) {
 			return callback(err);
 		}
 
-		callback(null, {
-			id: id
+		Aomparser.init(id, function(err, res){
+			callback(null, { id: res.id });
 		});
-	});*/
+		/*callback(null, {
+			id: id
+		});*/
+	});
+
+	
 };
 
 module.exports = Extendedsc;
