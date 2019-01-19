@@ -25,7 +25,16 @@
   ],
   "scripts": [
     "public/js/loader.js",
-    "public/js/lib/"
+    "public/js/lib/actions/",
+    "public/js/lib/commands/",
+    "public/js/lib/editor/client.js",
+    "public/js/lib/actions.js",
+    "public/js/lib/base.js",
+    "public/js/lib/commands.js",
+    "public/js/lib/compose.js",
+    "public/js/lib/settings.js",
+    "public/js/lib/sockets.js",
+    "public/js/lib/utils.js"
   ],
   "modules": {
 		"composer.js": "public/js/lib/editor/editor.js",

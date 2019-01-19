@@ -61,10 +61,10 @@ define('editor', [
 		// https://github.com/NodeBB/NodeBB/issues/1951
 		// remove when 1951 is resolved
 
-		var title = postData.title.replace(/%/g, '&#37;').replace(/,/g, '&#44;');
+		//var title = postData.title.replace(/%/g, '&#37;').replace(/,/g, '&#44;');
 
 		var data = {
-			title: title,
+			//title: title,
 			isEditing: isEditing,
 			showHandleInput:  config.allowGuestHandles && (app.user.uid === 0 || (isEditing && isGuestPost && app.user.isAdmin)),
 			handle: postData ? postData.handle || '' : undefined,
@@ -78,9 +78,9 @@ define('editor', [
 			}
 			editorTemplate = $(editorTemplate);
 
-			editorTemplate.find('.title').each(function () {
+			/*editorTemplate.find('.title').each(function () {
 				$(this).text(translator.unescape($(this).text()));
-			});
+			});*/
 
 			editorTemplate.attr('data-uuid', editor_uuid);
 
@@ -126,7 +126,7 @@ define('editor', [
 		var pushData = {
 			action: 'extension.post',
 			eid: data.eid,
-			title: data.title || '',
+			//title: data.title || '',
 			body: data.body || '',
 			modified: false,
 			isMain: true

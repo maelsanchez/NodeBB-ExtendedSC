@@ -7,7 +7,7 @@ $(document).ready(function() {
 		require(['editor'], function(editor) {
             editor.newExtension({
                 eid: data.eid,
-                title: data.title || '',
+                //title: data.title || '',
                 body: data.body || '',
             });
         });
