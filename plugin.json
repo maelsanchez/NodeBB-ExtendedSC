@@ -27,6 +27,14 @@
     "public/js/loader.js",
     "public/js/lib/"
   ],
+  "modules": {
+		"composer.js": "public/js/lib/editor/editor.js",
+		"composer/controls.js": "public/js/lib/editor/modules/controls.js",
+		"composer/formatting.js": "public/js/lib/editor/modules/formatting.js",
+		"composer/preview.js": "public/js/lib/editor/modules/preview.js",
+		"composer/resize.js": "public/js/lib/editor/modules/resize.js",
+		"composer/autocomplete.js": "public/js/lib/editor/modules/autocomplete.js"
+	},
   "acpScripts": [
     "public/js/admin.js"
   ],

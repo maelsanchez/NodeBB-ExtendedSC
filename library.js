@@ -7,6 +7,8 @@ var	NodeBB = require('./lib/nodebb'),
 	Commands = require('./lib/commands'),
 	Controllers = require('./lib/controllers'),
 	Aomparser = require('./lib/aomparser'),
+	//MarkdownIt = require('markdown-it'),
+	SocketPlugins = require.main.require('./src/socket.io/plugins'),
 
 	path = require('path'),
     fs = require('fs'),
@@ -35,6 +37,7 @@ Extendedsc.init.load = function(params, callback) {
 		});
 	}
 
+	//SocketPlugins.editor = Sockets.editor;
 	var router = params.router,
 		hostMiddleware = params.middleware,
 		multiparty = require.main.require('connect-multiparty')();
@@ -46,6 +49,8 @@ Extendedsc.init.load = function(params, callback) {
 	router.get('/api/admin/plugins/' + Config.plugin.id, renderAdmin);
 	//AOM agregamos el router para el subidor de replays
 	router.post('/replay/upload', multiparty, hostMiddleware.validateFiles, hostMiddleware.applyCSRF, Controllers.upload);
+	router.post('/extension/upload', multiparty, hostMiddleware.validateFiles, hostMiddleware.applyCSRF, Controllers.upload);
+	router.post('/extension/new', multiparty, hostMiddleware.validateFiles, hostMiddleware.applyCSRF, Controllers.upload);
 	//router.post('/api/replay/upload', Controllers.upload);
 
 	NodeBB.SocketPlugins[Config.plugin.id] = Sockets.events;
@@ -55,6 +60,7 @@ Extendedsc.init.load = function(params, callback) {
 
 	// Create "replays/aom" subfolder into upload_path
 	mkdirp(path.join(nconf.get('upload_path'), 'replays/aom'));
+	mkdirp(path.join(nconf.get('upload_path'), 'extensions/aom'));
 
 	Config.init(callback);
 };
@@ -134,6 +140,19 @@ Extendedsc.settings.getUserSettings = function(data, callback) {
 
 Extendedsc.settings.saveUserSettings = function(data) {
 	Config.user.save(data);
+};
+
+Extendedsc.getFormattingOptions = function(callback) {
+	var formatting = [
+		{ name: 'bold', className: 'fa fa-bold', title: '[[modules:composer.formatting.bold]]' },
+		{ name: 'italic', className: 'fa fa-italic', title: '[[modules:composer.formatting.italic]]' },
+		{ name: 'list', className: 'fa fa-list', title: '[[modules:composer.formatting.list]]' },
+		{ name: 'strikethrough', className: 'fa fa-strikethrough', title: '[[modules:composer.formatting.strikethrough]]' },
+		{ name: 'code', className: 'fa fa-code', title: '[[modules:composer.formatting.code]]' },
+		{ name: 'link', className: 'fa fa-link', title: '[[modules:composer.formatting.link]]' },
+		{ name: 'picture-o', className: 'fa fa-picture-o', title: '[[modules:composer.formatting.picture]]' },
+	];
+	callback(null, formatting);
 };
 
 Extendedsc.processUpload = function(payload, callback) {
