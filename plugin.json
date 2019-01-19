@@ -17,9 +17,6 @@
     { "hook": "filter:widgets.getWidgets", "method": "widget.define" },
     { "hook": "filter:widget.render:extendedsc", "method": "widget.render" }
   ],
-  "staticDirs": {
-    "public": "./public"
-  },
   "less": [
     "public/less/style.less"
   ],

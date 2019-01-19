@@ -73,9 +73,9 @@ define('editor', [
 		};
 
 		app.parseAndTranslate('editor', data, function(editorTemplate) {
-			if ($('.editor.editor[data-uuid="' + editor_uuid + '"]').length) {
+			/*if ($('.editor.editor[data-uuid="' + editor_uuid + '"]').length) {
 				return;
-			}
+			}*/
 			editorTemplate = $(editorTemplate);
 
 			/*editorTemplate.find('.title').each(function () {
