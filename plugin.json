@@ -37,12 +37,11 @@
     "public/js/lib/utils.js"
   ],
   "modules": {
-		"composer.js": "public/js/lib/editor/editor.js",
-		"composer/controls.js": "public/js/lib/editor/modules/controls.js",
-		"composer/formatting.js": "public/js/lib/editor/modules/formatting.js",
-		"composer/preview.js": "public/js/lib/editor/modules/preview.js",
-		"composer/resize.js": "public/js/lib/editor/modules/resize.js",
-		"composer/autocomplete.js": "public/js/lib/editor/modules/autocomplete.js"
+		"editor.js": "public/js/lib/editor/editor.js",
+		"editor/controls.js": "public/js/lib/editor/modules/controls.js",
+		"editor/formatting.js": "public/js/lib/editor/modules/formatting.js",
+		"editor/preview.js": "public/js/lib/editor/modules/preview.js",
+		"editor/resize.js": "public/js/lib/editor/modules/resize.js"
 	},
   "acpScripts": [
     "public/js/admin.js"
