@@ -15,7 +15,8 @@ var	NodeBB = require('./lib/nodebb'),
     mkdirp = require('mkdirp'),
     mv = require('mv'),
     async = require('async'),
-    nconf = require.main.require('nconf'),
+	nconf = require.main.require('nconf'),
+	meta = require.main.require('./src/meta'),
 
 	app,
 
@@ -140,6 +141,24 @@ Extendedsc.settings.getUserSettings = function(data, callback) {
 
 Extendedsc.settings.saveUserSettings = function(data) {
 	Config.user.save(data);
+};
+
+Extendedsc.addPrefetchTags = function(hookData, callback) {
+	var prefetch = [
+		'/assets/src/modules/editor.js',  '/assets/src/modules/editor/resize.js', '/assets/templates/editor.tpl'
+		//'/assets/language/' + (meta.config.defaultLang || 'en-GB') + '/topic.json',
+		//'/assets/language/' + (meta.config.defaultLang || 'en-GB') + '/modules.json',
+		//'/assets/language/' + (meta.config.defaultLang || 'en-GB') + '/tags.json'
+	];
+
+	hookData.links = hookData.links.concat(prefetch.map(function(path) {
+		return {
+			rel: 'prefetch',
+			href: nconf.get('relative_path') + path + '?' + meta.config['cache-buster']
+		};
+	}));
+
+	callback(null, hookData);
 };
 
 Extendedsc.getFormattingOptions = function(callback) {
