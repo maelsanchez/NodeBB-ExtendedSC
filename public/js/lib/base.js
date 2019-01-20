@@ -37,6 +37,7 @@
 		this.settings = Extendedsc.settings.init(this);
 		this.actions = Extendedsc.actions.init(this);
 		this.commands = Extendedsc.commands.init(this);
+		this.upload = Extendedsc.upload.init(this);
 	}
 
 	Instance.prototype.addShouts = function(shouts) {

@@ -5,28 +5,7 @@
 	var Replay = function(sbInstance) {
 		this.register = function() {
             sbInstance.dom.container.find('.extendedsc-button-replay').on('click', function(e) {
-                $('#files').click();
-                console.log('click sobre boton');
-            });
-			/*ajaxify.loadTemplate('shoutbox/features/replay', function(tpl){
-				$(document.body).append(tpl);
-
-				var gistModal = $('#shoutbox-modal-gist');
-
-				sbInstance.dom.container.find('.shoutbox-button-gist').off('click').on('click', function(e) {
-					gistModal.modal('show');
-				});
-
-				gistModal.find('#shoutbox-button-create-gist-submit').off('click').on('click', function(e) {
-					createGist(gistModal.find('textarea').val(), gistModal);
-				});
-            });*/
-            
-            $('#files').on('change', function(e) {
-                var files = (e.target || {}).files || ($(this).val() ? [{name: $(this).val(), type: utils.fileMimeType($(this).val())}] : null);
-                if (files) {
-                    uploadContentFiles({files: files, route: '/replay/upload'});
-                }
+                $(window).trigger('action:extendedsc.file.upload', {module: 'replay', name: '.extendedsc-button-replay', file: true});
             });
         };
 

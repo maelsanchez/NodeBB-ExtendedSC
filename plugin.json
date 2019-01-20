@@ -32,7 +32,8 @@
     "./public/js/lib/compose.js",
     "./public/js/lib/settings.js",
     "./public/js/lib/sockets.js",
-    "./public/js/lib/utils.js"
+    "./public/js/lib/utils.js",
+    "./public/js/lib/upload.js"
   ],
   "modules": {
 		"editor.js": "./public/js/lib/editor.js",
