@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-extendedsc",
-  "version": "0.3.29",
+  "version": "0.3.30",
   "description": "NodeBB ExtendedSC Plugin",
   "main": "library.js",
   "directories": {
