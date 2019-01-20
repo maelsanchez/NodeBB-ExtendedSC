@@ -6,7 +6,12 @@
                 <h4 class="modal-title" id="extendedscModalExtension">Upload mod</h4>
             </div>
             <div class="modal-body">
-                <div class="editorBody"></div>
+                <div class="control-group">
+                    <label class="control-label" for="inputExtname">Extension name</label>
+                    <div class="controls">
+                        <input class="form-control" type="text" id="inputExtname" placeholder="Extension name" value="">
+                    </div>
+                </div>
                 <select class="form-control" id="typeExt" data-property="typeExtension">
 					<option value="" selected="">Default</option>
 					<option value="Interface">Interface</option>
@@ -16,12 +21,7 @@
                     <option value="Maps/Escenaries">Maps/escenaries</option>
                     <option value="Editor">Editor</option>
 				</select>
-                <div class="control-group">
-                    <label class="control-label" for="inputExtname">Extension name</label>
-                    <div class="controls">
-                        <input class="form-control" type="text" id="inputExtname" placeholder="Extension name" value="">
-                    </div>
-                </div>
+                <div class="editorBody"></div>
                 <div class="checkbox">
 					<label>
 						<input type="checkbox" id="onlineExt" data-property="worksonline"> <strong>Compatible online</strong>

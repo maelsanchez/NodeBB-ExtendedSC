@@ -266,16 +266,6 @@ define('editor', [
 						controls.updateTextareaSelection(textarea, selectionEnd + 3 - wrapDelta[1], selectionEnd + strings.link_url.length + 3 - wrapDelta[1]);
 					}
 				});
-
-				formatting.addButtonDispatch('picture-o', function (textarea, selectionStart, selectionEnd) {
-					if (selectionStart === selectionEnd) {
-						controls.insertIntoTextarea(textarea, '![' + strings.picture_text + '](' + strings.picture_url + ')');
-						controls.updateTextareaSelection(textarea, selectionStart + strings.picture_text.length + 4, selectionEnd + strings.picture_text.length + strings.picture_url.length + 4);
-					} else {
-						var wrapDelta = controls.wrapSelectionInTextareaWith(textarea, '![', '](' + strings.picture_url + ')');
-						controls.updateTextareaSelection(textarea, selectionEnd + 4 - wrapDelta[1], selectionEnd + strings.picture_url.length + 4 - wrapDelta[1]);
-					}
-				});
 			});
 		}
 	};
