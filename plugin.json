@@ -19,30 +19,30 @@
     { "hook": "filter:widget.render:extendedsc", "method": "widget.render" }
   ],
   "less": [
-    "public/less/style.less"
+    "./public/less/style.less"
   ],
   "scripts": [
-    "public/js/loader.js",
-    "public/js/lib/actions/",
-    "public/js/lib/commands/",
-    "public/js/lib/editor/client.js",
-    "public/js/lib/actions.js",
-    "public/js/lib/base.js",
-    "public/js/lib/commands.js",
-    "public/js/lib/compose.js",
-    "public/js/lib/settings.js",
-    "public/js/lib/sockets.js",
-    "public/js/lib/utils.js"
+    "./public/js/loader.js",
+    "./public/js/lib/actions/",
+    "./public/js/lib/commands/",
+    "./public/js/lib/client.js",
+    "./public/js/lib/actions.js",
+    "./public/js/lib/base.js",
+    "./public/js/lib/commands.js",
+    "./public/js/lib/compose.js",
+    "./public/js/lib/settings.js",
+    "./public/js/lib/sockets.js",
+    "./public/js/lib/utils.js"
   ],
   "modules": {
-		"editor.js": "public/js/lib/editor/editor.js",
-		"editor/controls.js": "public/js/lib/editor/modules/controls.js",
-		"editor/formatting.js": "public/js/lib/editor/modules/formatting.js",
-		"editor/preview.js": "public/js/lib/editor/modules/preview.js",
-		"editor/resize.js": "public/js/lib/editor/modules/resize.js"
+		"editor.js": "./public/js/lib/editor.js",
+		"editor/controls.js": "./public/js/lib/editor/controls.js",
+		"editor/formatting.js": "./public/js/lib/editor/formatting.js",
+		"editor/preview.js": "./public/js/lib/editor/preview.js",
+		"editor/resize.js": "./public/js/lib/editor/resize.js"
 	},
   "acpScripts": [
-    "public/js/admin.js"
+    "./public/js/admin.js"
   ],
   "soundpack": {
     "name": "Extendedsc",
@@ -53,5 +53,5 @@
       "extendedsc-cena": "extendedsc-cena.mp3"
     }
   },
-  "templates": "./templates"
+  "templates": "templates/"
 }
