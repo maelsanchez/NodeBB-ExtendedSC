@@ -7,61 +7,61 @@
             </div>
             <div class="modal-body">
                 <div class="control-group">
-                    <label class="control-label" for="inputExtname">Extension name</label>
+                    <label class="control-label" for="scTitle">Extension name</label>
                     <div class="controls">
-                        <input class="form-control" type="text" id="inputExtname" placeholder="Extension name" value="">
+                        <input class="form-control" type="text" id="scTitle" name="title" placeholder="Extension name" value="">
                     </div>
                 </div>
-                <select class="form-control" id="typeExt" data-property="typeExtension">
-					<option value="" selected="">Default</option>
-					<option value="Interface">Interface</option>
-					<option value="Textures">Textures</option>
-					<option value="Campaigns">Campaigns</option>
-					<option value="Models">Models</option>
-                    <option value="Maps/Escenaries">Maps/escenaries</option>
-                    <option value="Editor">Editor</option>
-				</select>
+                <select class="form-control" id="scExtensionType" name="type" data-property="typeExtension">
+                    <option value="" selected="">Default</option>
+                    <option value="interface">Interface</option>
+                    <option value="texture">Textures</option>
+                    <option value="campaign">Campaigns</option>
+                    <option value="model">Models</option>
+                    <option value="map">Maps/escenaries</option>
+                    <option value="editor">Editor</option>
+                </select>
                 <div class="editorBody"></div>
                 <div class="checkbox">
-					<label>
-						<input type="checkbox" id="onlineExt" data-property="worksonline"> <strong>Compatible online</strong>
-					</label>
-				</div>
-                <button type="button" class="btn btn-primary btn-xs">
+                    <label>
+                        <input type="checkbox" id="scWorksOnline" name="worksonline" data-property="worksonline"> <strong>Compatible online</strong>
+                    </label>
+                </div>
+                <button type="button" class="btn btn-primary btn-xs fileInput" data-module="extension">
                     <span class="fa"></span> seleccionar mod
                 </button>
 
-                <button type="button" class="btn btn-primary btn-xs">
+                <button type="button" class="btn btn-primary btn-xs imageInput" data-module="picture">
                     <span class="fa"></span> seleccionar thumbnail
                 </button>
 
-                <button type="button" class="btn btn-primary btn-xs">
+                <button type="button" class="btn btn-primary btn-xs imageInput" data-module="cover">
                     <span class="fa"></span> seleccionar portada 1
                 </button>
 
-                <button type="button" class="btn btn-primary btn-xs">
+                <button type="button" class="btn btn-primary btn-xs imageInput" data-module="cover">
                     <span class="fa"></span> seleccionar portada 2
                 </button>
 
-                <button type="button" class="btn btn-primary btn-xs">
+                <button type="button" class="btn btn-primary btn-xs imageInput" data-module="cover">
                     <span class="fa"></span> seleccionar portada 3
                 </button>
+                <form id="imagesForm" method="post">
+                    <!--[if gte IE 9]><!-->
+                        <input type="file" id="images" name="files[]" class="gte-ie9 hide"/>
+                    <!--<![endif]-->
+                    <!--[if lt IE 9]>
+                        <input type="file" id="files" name="files[]" class="lt-ie9 hide" value="Upload"/>
+                    <![endif]-->
+                </form>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="extendedsc-button-create-extension-submit">Submit</button>
+                <button type="button" class="btn btn-primary scActionSubmit" id="extendedsc-button-create-extension-submit">Submit</button>
             </div>
         </div>
     </div>
-    <form id="extensionForm" method="post" enctype="multipart/form-data">
-        <!--[if gte IE 9]><!-->
-            <input type="file" id="files" name="files[]" multiple class="gte-ie9 hide"/>
-        <!--<![endif]-->
-        <!--[if lt IE 9]>
-            <input type="file" id="files" name="files[]" class="lt-ie9 hide" value="Upload"/>
-        <![endif]-->
-    </form>
 </div>
 
 

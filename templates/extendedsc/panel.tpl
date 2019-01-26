@@ -59,7 +59,7 @@
 
             <form id="filesForm" method="post" enctype="multipart/form-data">
                 <!--[if gte IE 9]><!-->
-                    <input type="file" id="files" name="files[]" multiple class="gte-ie9 hide"/>
+                    <input type="file" id="files" name="files[]" class="gte-ie9 hide"/>
                 <!--<![endif]-->
                 <!--[if lt IE 9]>
                     <input type="file" id="files" name="files[]" class="lt-ie9 hide" value="Upload"/>

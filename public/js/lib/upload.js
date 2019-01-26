@@ -2,35 +2,52 @@
 /* global app, ajaxify, config */
 
 (function(Extendedsc) {
-    var formData = {};
+    var form = {};
 	var Upload = function(instance) {
-		this.sb = instance;
+        this.sb = instance;
     };
-    console.log('entra');
+
     $(window).on('action:extendedsc.file.upload', function(ev, data) {
-        $(data.name).off('click').on('click', function() {
-            formData = data;
+        form = data;
+        if(data.module != 'replay'){
+            $(data.name).off('click').on('click', function() {
+                $('#files').click();
+            });
+        }else{
             $('#files').click();
-        });
+        }
+    });
+
+    $(window).on('action:extendedsc.data.upload', function(ev, data) {
+        uploadFiles(data);
     });
     
     $('#files').on('change', function(e) {
         var files = (e.target || {}).files || ($(this).val() ? [{name: $(this).val(), type: utils.fileMimeType($(this).val())}] : null);
         if (files) {
-            this.uploadFiles({files: files, data: formData});
+            form.push({files: files});
+            uploadFiles(form);
         }
     });
-
-    Upload.prototype.uploadFiles = function(params) {
+ 
+    function uploadFiles(params) {
 		console.log('Subiendo');
         var files = params.files;
         //var post_uuid = params.post_uuid;
         //var postContainer = $('.composer[data-uuid="' + post_uuid + '"]');
         //var textarea = postContainer.find('textarea');
         //var text = textarea.val();
+        //var uploadForm = $('#filesForm');
         var uploadForm = $('#filesForm');
         var doneUploading = false;
-        uploadForm.attr('action', config.relative_path + '/replay/upload');
+        var router = params.file ? 'file/upload':'upload';
+        uploadForm.attr('action', config.relative_path + '/extendedsc/' + router);
+
+        if(params.file) {
+            uploadForm.attr('enctype', 'multipart/form-data');
+        }
+
+        console.log('#extendedsc-modal-' + params.module);
 
         /*var cid = categoryList.getSelectedCid();
         if (!cid && ajaxify.data.cid) {
@@ -105,12 +122,12 @@
                 },
                 resetForm: true,
                 clearForm: true,
-                formData: params.formData,
+                data: params,
                 /*data: { cid: cid },*/
 
                 error: function (xhr) {
                     //postContainer.find('[data-action="post"]').prop('disabled', false);
-                    this.onUploadError(xhr);
+                    onUploadError(xhr);
                     console.log('Error');
                     console.log(xhr);
                 },
@@ -152,27 +169,27 @@
         });
 
         uploadForm.submit();
-    };
+    }
     
-    Upload.prototype.onUploadError = function(xhr) {
+    function onUploadError(xhr) {
         var msg = (xhr.responseJSON && xhr.responseJSON.error) || '[[error:parse-error]]';
         if (xhr && xhr.status === 413) {
             msg = xhr.statusText || 'Request Entity Too Large';
         }
         app.alertError(msg);
         console.log('onUploadError');
-    };
+    }
 
-    Upload.prototype.escapeRegExp = function(text) {
+    function escapeRegExp(text) {
         return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
         console.log('escapeRegExp');
-    };
+    }
 
-    Upload.prototype.resetInputFile = function($el) {
+    function resetInputFile($el) {
         $el.wrap('<form />').closest('form').get(0).reset();
         $el.unwrap();
         console.log('resetInputFile');
-    };
+    }
 
 	Extendedsc.upload = {
 		init: function(instance) {

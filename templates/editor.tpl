@@ -21,7 +21,7 @@
 
 		<div class="row write-preview-container">
 			<div class="col-md-6 col-sm-12 write-container">
-				<textarea name="content" form="compose-form" class="write" tabindex="5"></textarea>
+				<textarea id="scBody" name="content" form="compose-form" class="write" tabindex="5"></textarea>
 			</div>
 		</div>
 	</div>

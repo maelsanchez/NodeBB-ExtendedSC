@@ -5,8 +5,8 @@ var	NodeBB = require('./lib/nodebb'),
 	Config = require('./lib/config'),
 	Sockets = require('./lib/sockets'),
 	Commands = require('./lib/commands'),
-	Controllers = require('./lib/controllers'),
-	Aomparser = require('./lib/aomparser'),
+	UploadSC = require('./lib/uploadsc'),
+	//Aomparser = require('./lib/aomparser'),
 	//MarkdownIt = require('markdown-it'),
 	SocketPlugins = require.main.require('./src/socket.io/plugins'),
 
@@ -38,6 +38,24 @@ Extendedsc.init.load = function(params, callback) {
 		});
 	}
 
+	function processUpload(req, res, callback) {
+		async.waterfall([
+			function (next) {
+				UploadSC.init(req, res, next);
+			},
+			function (fileData, next) {
+				if(req.body.action == 'extensions') {
+					Actions.uploadFile(req.body, fileData, callback);
+				}
+				next(null, fileData);
+			},
+			function (result, next) {
+				next(null, result);
+				//res.json([result]);
+			},
+		], callback);
+	}
+
 	//SocketPlugins.editor = Sockets.editor;
 	var router = params.router,
 		hostMiddleware = params.middleware,
@@ -49,9 +67,8 @@ Extendedsc.init.load = function(params, callback) {
 	router.get('/admin/plugins/' + Config.plugin.id, hostMiddleware.admin.buildHeader, renderAdmin);
 	router.get('/api/admin/plugins/' + Config.plugin.id, renderAdmin);
 	//AOM agregamos el router para el subidor de replays
-	router.post('/replay/upload', multiparty, hostMiddleware.validateFiles, hostMiddleware.applyCSRF, Controllers.upload);
-	router.post('/extension/upload', multiparty, hostMiddleware.validateFiles, hostMiddleware.applyCSRF, Controllers.upload);
-	router.post('/extension/new', multiparty, hostMiddleware.validateFiles, hostMiddleware.applyCSRF, Controllers.upload);
+	router.post('/extendedsc/file/upload', multiparty, hostMiddleware.validateFiles, hostMiddleware.applyCSRF, processUpload);
+	//router.post('/extendedsc/upload', Controllers.upload);
 	//router.post('/api/replay/upload', Controllers.upload);
 
 	NodeBB.SocketPlugins[Config.plugin.id] = Sockets.events;
@@ -173,27 +190,5 @@ Extendedsc.getFormattingOptions = function(callback) {
 	callback(null, formatting);
 };
 
-Extendedsc.processUpload = function(payload, callback) {
-	var id = path.basename(payload.path),
-		uploadPath = path.join(nconf.get('upload_path'), 'replays/aom', id);
-	console.log(payload);
-
-	async.waterfall([
-		async.apply(mv, payload.path, uploadPath)
-	], function(err) {
-		if (err) {
-			return callback(err);
-		}
-
-		Aomparser.init(id, function(err, res){
-			callback(null, { id: res.id });
-		});
-		/*callback(null, {
-			id: id
-		});*/
-	});
-
-	
-};
 
 module.exports = Extendedsc;

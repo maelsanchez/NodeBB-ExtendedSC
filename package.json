@@ -1,14 +1,66 @@
 {
-  "name": "nodebb-plugin-extendedsc",
-  "version": "0.3.32",
-  "description": "NodeBB ExtendedSC Plugin",
-  "main": "library.js",
-  "directories": {
-    "lib": "lib"
+  "_from": "nodebb-plugin-extendedsc@0.3.32",
+  "_id": "nodebb-plugin-extendedsc@0.3.32",
+  "_inBundle": false,
+  "_integrity": "sha512-KUe59Drn7jvun6Ikqe2N/JDdq5X/Euu85HmEXcU0SQPfExEOgHZkHqLuHKE7oBAo10vJfb95u3iuRdMUkTAbdQ==",
+  "_location": "/nodebb-plugin-extendedsc",
+  "_phantomChildren": {
+    "abab": "2.0.0",
+    "acorn": "6.0.4",
+    "acorn-globals": "4.3.0",
+    "array-equal": "1.0.0",
+    "async-limiter": "1.0.0",
+    "cssom": "0.3.4",
+    "cssstyle": "1.1.1",
+    "data-urls": "1.1.0",
+    "domexception": "1.0.1",
+    "escodegen": "1.11.0",
+    "html-encoding-sniffer": "1.0.2",
+    "nwsapi": "2.0.9",
+    "parse5": "5.1.0",
+    "pn": "1.1.0",
+    "psl": "1.1.31",
+    "request": "2.88.0",
+    "request-promise-native": "1.0.5",
+    "saxes": "3.1.4",
+    "symbol-tree": "3.2.2",
+    "w3c-hr-time": "1.0.1",
+    "w3c-xmlserializer": "1.0.1",
+    "webidl-conversions": "4.0.2",
+    "whatwg-encoding": "1.0.5",
+    "whatwg-mimetype": "2.3.0",
+    "whatwg-url": "7.0.0",
+    "xml-name-validator": "3.0.0"
   },
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "nodebb-plugin-extendedsc@0.3.32",
+    "name": "nodebb-plugin-extendedsc",
+    "escapedName": "nodebb-plugin-extendedsc",
+    "rawSpec": "0.3.32",
+    "saveSpec": null,
+    "fetchSpec": "0.3.32"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/nodebb-plugin-extendedsc/-/nodebb-plugin-extendedsc-0.3.32.tgz",
+  "_shasum": "649704e7913f42cca8d7482eeba3ebafc028b7b3",
+  "_spec": "nodebb-plugin-extendedsc@0.3.32",
+  "_where": "C:\\Users\\Mael\\Documents\\MEGA\\MEGAsync\\UniversidadAOM\\Almacen de archivos\\Proyectos NodeBB\\UniversidadAOM\\nodebb\\NodeBB",
+  "author": {
+    "name": "mael"
+  },
+  "bugs": {
+    "url": "https://github.com/maelsanchez/NodeBB-ExtendedSC/issues"
+  },
+  "bundleDependencies": false,
   "dependencies": {
     "async": "^2.0.0-rc.3",
     "bufferpack": "0.0.6",
+    "hashids": "^1.2.2",
     "jsdom": "^13.1.0",
     "mkdirp": "^0.5.1",
     "mv": "^2.1.1",
@@ -18,24 +70,28 @@
     "xmldom": "^0.1.27",
     "xpath": "0.0.27"
   },
+  "deprecated": false,
+  "description": "NodeBB ExtendedSC Plugin",
+  "devDependencies": {},
+  "directories": {
+    "lib": "lib"
+  },
+  "homepage": "https://github.com/maelsanchez/NodeBB-ExtendedSC#readme",
+  "keywords": [
+    "nodebb"
+  ],
+  "license": "ISC",
+  "main": "library.js",
+  "name": "nodebb-plugin-extendedsc",
   "nbbpm": {
     "compatibility": "^1.6.1"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maelsanchez/NodeBB-ExtendedSC.git"
   },
-  "keywords": [
-    "nodebb"
-  ],
-  "author": "mael",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/maelsanchez/NodeBB-ExtendedSC/issues"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/maelsanchez/NodeBB-ExtendedSC#readme"
+  "version": "0.3.32"
 }
