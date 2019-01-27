@@ -41,8 +41,8 @@
 		"editor/formatting.js": "./public/js/lib/editor/formatting.js",
 		"editor/preview.js": "./public/js/lib/editor/preview.js",
     "editor/resize.js": "./public/js/lib/editor/resize.js",
-    "uploads": "./public/js/lib/modules/uploads.js",
-    "imageCropper": "./public/js/lib/modules/imageCropper.js",
+    "uploads.js": "./public/js/lib/modules/uploads.js",
+    "imageCropper.js": "./public/js/lib/modules/imageCropper.js"
 	},
   "acpScripts": [
     "./public/js/admin.js"

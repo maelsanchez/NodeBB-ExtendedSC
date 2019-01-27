@@ -153,13 +153,14 @@ define('uploads', ['imageCropper'], function (imageCropper) {
 
 		data.scModal.find('.imageInput').on('click', function () {
 			imageCropper.init({
+				scModal: data.scModal,
                 action: data.action,
                 module: $(this).data('module'),
 				socketMethod: 'plugins.extendedsc.uploadActionModule',
 				aspectRatio: 1 / 1,
 				paramName: 'uid',
-				paramValue: ajaxify.data.theirid,
-				fileSize: ajaxify.data.maximumProfileImageSize,
+				paramValue: config.uid,
+				fileSize: config.maximumFileSize,
 				allowSkippingCrop: false,
 				title: '[[user:upload_picture]]',
 				description: '[[user:upload_a_picture]]',

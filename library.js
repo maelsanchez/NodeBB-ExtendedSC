@@ -162,7 +162,11 @@ Extendedsc.settings.saveUserSettings = function(data) {
 
 Extendedsc.addPrefetchTags = function(hookData, callback) {
 	var prefetch = [
-		'/assets/src/modules/editor.js',  '/assets/src/modules/editor/resize.js', '/assets/templates/editor.tpl'
+		'/assets/src/modules/editor.js',
+		'/assets/src/modules/uploads.js',
+		'/assets/src/modules/imageCropper.js',
+		'/assets/src/modules/editor/resize.js',
+		'/assets/templates/editor.tpl'
 		//'/assets/language/' + (meta.config.defaultLang || 'en-GB') + '/topic.json',
 		//'/assets/language/' + (meta.config.defaultLang || 'en-GB') + '/modules.json',
 		//'/assets/language/' + (meta.config.defaultLang || 'en-GB') + '/tags.json'

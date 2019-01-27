@@ -192,6 +192,8 @@ define('imageCropper', ['cropper'], function (Cropper) {
 				imageDimension: data.imageDimension,
 				paramName: data.paramName,
 				paramValue: data.paramValue,
+				action: data.action,
+				module: data.module
 			}, callback);
 		}, false);
 
