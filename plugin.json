@@ -25,15 +25,14 @@
     "./public/js/loader.js",
     "./public/js/lib/actions/",
     "./public/js/lib/commands/",
-    "./public/js/lib/client.js",
     "./public/js/lib/actions.js",
     "./public/js/lib/base.js",
     "./public/js/lib/commands.js",
     "./public/js/lib/compose.js",
+    "./public/js/lib/rich.js",
     "./public/js/lib/settings.js",
     "./public/js/lib/sockets.js",
-    "./public/js/lib/utils.js",
-    "./public/js/lib/upload.js"
+    "./public/js/lib/utils.js"
   ],
   "modules": {
 		"editor.js": "./public/js/lib/editor.js",

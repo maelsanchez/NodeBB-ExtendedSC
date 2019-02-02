@@ -9,10 +9,10 @@
                 <div class="control-group">
                     <label class="control-label" for="scTitle">Extension name</label>
                     <div class="controls">
-                        <input class="form-control" type="text" id="scTitle" name="title" placeholder="Extension name" value="">
+                        <input class="form-control rcFormEl" type="text" id="scTitle" name="title" placeholder="Extension name" value="">
                     </div>
                 </div>
-                <select class="form-control" id="scExtensionType" name="type" data-property="typeExtension">
+                <select class="form-control rcFormEl" id="scExtensionType" name="type" data-property="typeExtension">
                     <option value="" selected="">Default</option>
                     <option value="interface">Interface</option>
                     <option value="texture">Textures</option>
@@ -24,26 +24,26 @@
                 <div class="editorBody"></div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" id="scWorksOnline" name="worksonline" data-property="worksonline"> <strong>Compatible online</strong>
+                        <input type="checkbox" id="scWorksOnline" class="rcFormEl" name="worksonline" data-property="worksonline"> <strong>Compatible online</strong>
                     </label>
                 </div>
-                <button type="button" class="btn btn-primary btn-xs fileInput" data-module="extension">
+                <button type="button" class="btn btn-primary btn-xs fileInput rcFormEl" module="file">
                     <span class="fa"></span> seleccionar mod
                 </button>
 
-                <button type="button" class="btn btn-primary btn-xs imageInput" data-module="picture">
+                <button type="button" class="btn btn-primary btn-xs imageInput" module="picture">
                     <span class="fa"></span> seleccionar thumbnail
                 </button>
 
-                <button type="button" class="btn btn-primary btn-xs imageInput" data-module="cover">
+                <button type="button" class="btn btn-primary btn-xs imageInput" module="frontcover">
                     <span class="fa"></span> seleccionar portada 1
                 </button>
 
-                <button type="button" class="btn btn-primary btn-xs imageInput" data-module="cover">
+                <button type="button" class="btn btn-primary btn-xs imageInput" module="foreedge">
                     <span class="fa"></span> seleccionar portada 2
                 </button>
 
-                <button type="button" class="btn btn-primary btn-xs imageInput" data-module="cover">
+                <button type="button" class="btn btn-primary btn-xs imageInput" module="backcover">
                     <span class="fa"></span> seleccionar portada 3
                 </button>
                 <form id="imagesForm" method="post">
@@ -58,7 +58,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary scActionSubmit" id="extendedsc-button-create-extension-submit">Submit</button>
+                <button type="button" class="btn btn-primary" id="createRcData">Submit</button>
             </div>
         </div>
     </div>

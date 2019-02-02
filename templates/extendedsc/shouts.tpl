@@ -22,7 +22,48 @@
 <!-- ENDIF !shouts.isChained -->
 
 <div class="extendedsc-shout {shouts.typeClasses}" data-sid="{shouts.sid}" data-uid="{shouts.fromuid}">
+    <!-- IF shouts.component -->
+    <div class="extendedsc-shout-richcontent">
+        <!-- IF shouts.component.extension -->
+        <a href="#" class="richcontent extensionComponent" component= "extension" jumble="{shouts.component.jumble}">
+            {shouts.component.title}
+            <br>
+            {shouts.component.type}
+            <br>
+            <img src="{shouts.component.picture}" width="30" height="30" />
+        </a>
+        <!-- ENDIF shouts.component.extension -->
+
+        <!-- IF shouts.component.tournament -->
+        <a href="#" class="richcontent tournamentComponent" component= "tournament" jumble="{shouts.component.jumble}">
+            {shouts.component.title}
+            <br>
+            {shouts.component.cover}
+            <br>
+            {shouts.component.date}
+            <br>
+            {shouts.component.server}
+        </a>
+        <!-- ENDIF shouts.component.tournament -->
+
+        <!-- IF shouts.component.replay -->
+        <div class="richcontent replayComponent" component= "replay" jumble="{shouts.component.jumble}">
+            {shouts.component.title}
+            <br>
+            {shouts.component.match}
+            <br>
+            {shouts.component.date}
+            <br>
+            {shouts.component.map}
+        </div>
+        <!-- ENDIF shouts.component.replay -->
+
+    </div>
+    <!-- ENDIF shouts.component -->
+
+    <!-- IF shouts.content -->
     <div class="extendedsc-shout-text">{shouts.content}</div>
+    <!-- ENDIF shouts.content -->
 
     <!-- IF shouts.user.isMod -->
     <div class="extendedsc-shout-options">

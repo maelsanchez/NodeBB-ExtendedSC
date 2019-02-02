@@ -10,41 +10,41 @@ define('uploads', ['imageCropper'], function (imageCropper) {
 		handleImageUpload(data);
 		handleFileUpload(data);
 
-		data.scModal.find('.scActionSubmit').on('click', function () {
-			createAction(data);
+		data.scModal.find('.scRcSubmit').on('click', function () {
+			createRs(data);
 		});
 	};
 
-	function createAction(data) {
-		var modal = data.scModal;
+	function createRs(data) {
+		var scModal = data.scModal;
 		var modalData = {
-			action: data.action,
-			title: modal.find('#scTitle').val(),
-			body: modal.find('#scBody').val(),
+			rc: data.rc,
+			title: scModal.find('#scTitle').val(),
+			body: scModal.find('#scBody').val(),
+			jumble: scModal.attr('jumble')
 		};
 
-		if(data.action == 'extensions') {
-			modalData.push({
-				nextid: 'Eid',
-				online: modal.find('#scWorksOnline').val(),
-				type: modal.find('#scExtensionType').val(),
-			});
+		if(data.rc == 'extension') {
+			modalData.online = scModal.find('#scWorksOnline').val();
+			modalData.type = scModal.find('#scExtensionType').val();
 		}
 
-		if(data.action == 'tournaments') {
-			modalData.push({
-				nextid: 'TOid',
-				start: modal.find('#scStart').val(),
-				size: modal.find('#scSize').val(),
-			});
+		if(data.rc == 'tournament') {
+			modalData.start = scModal.find('#scStart').val();
+			modalData.size = scModal.find('#scSize').val();
 		}
 
-		socket.emit('plugins.extendedsc.createActionModule', modalData, function (err, data) {
+		console.log(modalData);
+
+		socket.emit('plugins.extendedsc.createRc', modalData, function (err, data) {
 			if (err) {
 				return app.alertError(err.message);
 			}
 			console.log(data);
-
+			scModal.removeAttr('jumble');
+			scModal.modal('hide');
+			scModal.find("input, textarea, select").val('');
+			
 			/*app.alertSuccess('[[user:profile_update_success]]');
 
 			if (data.picture) {
@@ -57,10 +57,11 @@ define('uploads', ['imageCropper'], function (imageCropper) {
 
 	function handleFileUpload(data) {
 		data.scModal.find('.fileInput').on('click', function () {
+			var _this = $(this);
 			$('#files').on('change', function(e) {
 				var files = (e.target || {}).files || ($(this).val() ? [{name: $(this).val(), type: utils.fileMimeType($(this).val())}] : null);
 				if (files) {
-					data.push({files: files});
+					data.push({files: files, uid: config.uid, rc:data.rc, module: _this.attr('module')});
 					formUpload(form);
 				}
 			});
@@ -154,9 +155,10 @@ define('uploads', ['imageCropper'], function (imageCropper) {
 		data.scModal.find('.imageInput').on('click', function () {
 			imageCropper.init({
 				scModal: data.scModal,
-                action: data.action,
-                module: $(this).data('module'),
-				socketMethod: 'plugins.extendedsc.uploadActionModule',
+				jumble: data.scModal.attr('jumble'),
+                rc: data.rc,
+                module: $(this).attr('module'),
+				socketMethod: 'plugins.extendedsc.uploadRcModule',
 				aspectRatio: 1 / 1,
 				paramName: 'uid',
 				paramValue: config.uid,
@@ -168,8 +170,6 @@ define('uploads', ['imageCropper'], function (imageCropper) {
 			}, function (url) {
 				onUploadComplete(url);
 			});
-			console.log('data-module:' + $(this).data('module'));
-
 			return false;
 		});
 

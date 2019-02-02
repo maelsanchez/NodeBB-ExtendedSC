@@ -126,7 +126,6 @@ define('editor', [
 		var pushData = {
 			action: 'extension.post',
 			eid: data.eid,
-			//title: data.title || '',
 			body: data.body || '',
 			modified: false,
 			isMain: true

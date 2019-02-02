@@ -14,7 +14,7 @@
                     require(['uploads'], function(uploads) {
                         uploads.init({
                             scModal: extModal,
-                            action: 'extensions',
+                            rc: 'extension',
                         });
                     });
 				});

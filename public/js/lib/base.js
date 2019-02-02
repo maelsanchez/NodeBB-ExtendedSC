@@ -37,7 +37,7 @@
 		this.settings = Extendedsc.settings.init(this);
 		this.actions = Extendedsc.actions.init(this);
 		this.commands = Extendedsc.commands.init(this);
-		this.upload = Extendedsc.upload.init(this);
+		this.rich = Extendedsc.rich.init(this);
 	}
 
 	Instance.prototype.addShouts = function(shouts) {
@@ -46,7 +46,7 @@
 			lastSid = this.vars.lastSid,
 			timeStampUpdates = {},
 			uid, sid;
-
+		console.log(shouts);
 		shouts = shouts.map(function(el) {
 			uid = parseInt(el.fromuid, 10);
 			sid = parseInt(el.sid, 10);
@@ -86,12 +86,13 @@
 		this.vars.lastUid = lastUid;
 		this.vars.lastSid = lastSid;
 
+
 		templates.parse('extendedsc/shouts', {
 			shouts: shouts
 		}, function(html) {
 			self.dom.shoutsContainer.append(html);
 			self.utils.scrollToBottom(shouts.length > 1);
-
+			
 			// Chaos begins here
 			if (Object.keys(timeStampUpdates).length > 0) {
 				// Get all the user elements that belong to the sids that need their timestamp updated

@@ -4,10 +4,10 @@
 (function(Extendedsc) {
 	var Replay = function(sbInstance) {
 		this.register = function() {
-            sbInstance.dom.container.find('.extendedsc-button-replay').addClass('fileInput');
+            sbInstance.dom.container.find('.extendedsc-button-replay').addClass('fileInput').attr('module', 'file');
             require(['uploads'], function(uploads) {
                 uploads.init({
-                    action: 'replays',
+                    rc: 'replay'
                 });
             });
         };

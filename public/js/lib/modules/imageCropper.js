@@ -105,20 +105,24 @@ define('imageCropper', ['cropper'], function (Cropper) {
 						cropperModal.find('#upload-progress-bar').css('width', '100%');
 						cropperModal.find('#upload-progress-box').show().removeClass('hide');
 
-						var socketData = {};
+						var socketData = {
+							jumble: data.jumble,
+							rc: data.rc,
+							module: data.module,
+							imageData: imageData
+						};
                         socketData[data.paramName] = data.paramValue;
-                        socketData.action = data.action;
-                        socketData.module = data.module;
-						socketData.imageData = imageData;
 
 						socket.emit(data.socketMethod, socketData, function (err, imageData) {
+							console.log(imageData);
+							console.log(err);
 							if (err) {
 								cropperModal.find('#upload-progress-box').hide();
 								cropperModal.find('.upload-btn').removeClass('disabled');
 								cropperModal.find('.crop-btn').removeClass('disabled');
 								return app.alertError(err.message);
 							}
-
+							data.scModal.attr('jumble', imageData.hash);
 							callback(imageData.url);
 							cropperModal.modal('hide');
 						});
@@ -179,10 +183,9 @@ define('imageCropper', ['cropper'], function (Cropper) {
 		}
 		reader.addEventListener('load', function () {
 			imageUrl = reader.result;
-
 			data.scModal.modal('hide');
-
 			module.handleImageCrop({
+				scModal:data.scModal,
 				url: imageUrl,
 				imageType: imageType,
 				socketMethod: data.socketMethod,
@@ -192,9 +195,12 @@ define('imageCropper', ['cropper'], function (Cropper) {
 				imageDimension: data.imageDimension,
 				paramName: data.paramName,
 				paramValue: data.paramValue,
-				action: data.action,
+				jumble: data.jumble,
+				rc: data.rc,
 				module: data.module
-			}, callback);
+			}, function(err){
+				data.scModal.modal('show');
+			});
 		}, false);
 
 		if (file) {

@@ -6,6 +6,7 @@ var	NodeBB = require('./lib/nodebb'),
 	Sockets = require('./lib/sockets'),
 	Commands = require('./lib/commands'),
 	UploadSC = require('./lib/uploadsc'),
+	Rich = require('./lib/rich'),
 	//Aomparser = require('./lib/aomparser'),
 	//MarkdownIt = require('markdown-it'),
 	SocketPlugins = require.main.require('./src/socket.io/plugins'),
@@ -39,13 +40,15 @@ Extendedsc.init.load = function(params, callback) {
 	}
 
 	function processUpload(req, res, callback) {
+		console.log('entra papu');
+		console.log(req.body);
 		async.waterfall([
 			function (next) {
 				UploadSC.init(req, res, next);
 			},
 			function (fileData, next) {
-				if(req.body.action == 'extensions') {
-					Actions.uploadFile(req.body, fileData, callback);
+				if(req.body.rc == 'extension') {
+					Rich.upload({name:'uploadRcFile', uid: req.body.uid}, req.body, fileData, callback);
 				}
 				next(null, fileData);
 			},
