@@ -60,6 +60,7 @@
   "dependencies": {
     "async": "^2.0.0-rc.3",
     "bufferpack": "0.0.6",
+    "fast-xml-parser": "^3.12.12",
     "hashids": "^1.2.2",
     "jsdom": "^13.1.0",
     "mkdirp": "^0.5.1",
