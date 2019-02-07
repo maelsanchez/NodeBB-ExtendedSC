@@ -129,6 +129,18 @@
 				});
 			}
 
+			if(name == 'tournament') {
+				console.log('entra');
+				app.loadJQueryUI(function () {
+					$('#scstartTime').datepicker({
+						changeMonth: true,
+						changeYear: true,
+						yearRange: '1900:-5y',
+						defaultDate: '-13y',
+					});
+				});
+			}
+
 			var set_up = {container: modal, id: name};
 			if(data) handleEntries(modal, data);
 			handleImageUpload(set_up);

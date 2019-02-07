@@ -46,7 +46,7 @@
 			lastSid = this.vars.lastSid,
 			timeStampUpdates = {},
 			uid, sid;
-		console.log(shouts);
+		
 		shouts = shouts.map(function(el) {
 			uid = parseInt(el.fromuid, 10);
 			sid = parseInt(el.sid, 10);
@@ -76,6 +76,17 @@
 			// Extra classes
 			el.typeClasses = el.isOwn ? "extendedsc-shout-self " : "";
 			el.typeClasses += el.user.isAdmin ? "extendedsc-shout-admin " : "";
+
+			if(el.component && el.component.match){
+				var neat = el.component.match.reduce(function (r, a) {
+					a.civilization = '/assets/images/icons/' + a.civilization + '.jpg';
+					r[a.team] = r[a.team] || [];
+					r[a.team]['team'] = r[a.team]['team'] || [];
+					r[a.team]['team'].push(a);
+					return r;
+				}, Object.create(null));
+				el.component.match = neat;
+			}
 
 			lastUid = uid;
 			lastSid = sid;

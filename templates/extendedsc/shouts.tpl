@@ -50,11 +50,21 @@
         <div class="richcontent replayComponent" component= "replay" jumble="{shouts.component.jumble}">
             {shouts.component.title}
             <br>
-            {shouts.component.match}
+            {shouts.component.filename}
             <br>
-            {shouts.component.date}
+            {shouts.component.timestamp}
             <br>
-            {shouts.component.map}
+            {shouts.component.gamemode}
+            <br>
+            <!-- BEGIN shouts.component.match -->
+                <p>team @key</p>
+                <!-- BEGIN shouts.component.match.team -->
+                    {shouts.component.match.team.name}
+                    <img src="{shouts.component.match.team.civilization}" width="30" height="30">
+                    
+                <!-- END shouts.component.match.team -->
+            <!-- END shouts.component.match -->
+
         </div>
         <!-- ENDIF shouts.component.replay -->
 

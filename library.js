@@ -39,25 +39,43 @@ Extendedsc.init.load = function(params, callback) {
 		});
 	}
 
-	function processUpload(req, res, callback) {
-		console.log('entra papu');
-		console.log(req.body);
+	function uploadRcFile(req, res, callback) {
+		var message;
 		async.waterfall([
 			function (next) {
 				UploadSC.init(req, res, next);
 			},
 			function (fileData, next) {
-				if(req.body.rc == 'extension') {
-					Rich.upload({name:'uploadRcFile', uid: req.body.uid}, req.body, fileData, callback);
+				Rich.upload({name:'uploadRcFile', uid: req.body.uid}, req.body, fileData[0], next);
+			},
+			function (data, next) {
+				if (req.body.rc == 'replay' && data.key) {
+					var Shouts = require('./lib/shouts');
+					Shouts.addShout(req.body.uid, {message: '', rich_key: data.key}, function(err, shout) {
+						if (err) return callback(err);
+						console.log('shout');
+						console.log(shout);
+						NodeBB.SocketIndex.server.sockets.emit('event:extendedsc.receive', shout);
+					});
 				}
-				next(null, fileData);
+				callback(null, true);
 			},
-			function (result, next) {
-				next(null, result);
-				//res.json([result]);
-			},
+			function (next) {
+				next(null, {message: message});
+			}
 		], callback);
 	}
+
+	function processUpload(req, res, callback) {
+		uploadRcFile(req, res, function(err, data){
+			if(data.message || err) {
+				res.status(500).json({error: data.message});
+			}else{
+				res.status(200).json(true);
+			}
+		});
+	}
+
 
 	//SocketPlugins.editor = Sockets.editor;
 	var router = params.router,
